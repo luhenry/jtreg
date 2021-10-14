@@ -6,10 +6,12 @@ FROM mcr.microsoft.com/vscode/devcontainers/java:0-${VARIANT}
 
 COPY --from=openjdk:8-jdk-buster /usr/local/openjdk-8 /usr/local/openjdk-8
 COPY --from=openjdk:11-jdk-buster /usr/local/openjdk-11 /usr/local/openjdk-11
-COPY --from=openjdk:16-jdk-buster /usr/local/openjdk-16 /usr/local/openjdk-16
 COPY --from=openjdk:17-jdk-buster /usr/local/openjdk-17 /usr/local/openjdk-17
 
-ENV JAVA_HOME="/usr/local/openjdk-17"
+ENV JAVA_8_HOME="/usr/local/openjdk-8"
+ENV JAVA_11_HOME="/usr/local/openjdk-11"
+ENV JAVA_17_HOME="/usr/local/openjdk-17"
+ENV JAVA_HOME="${JAVA_8_HOME}"
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 # [Option] Install Maven
